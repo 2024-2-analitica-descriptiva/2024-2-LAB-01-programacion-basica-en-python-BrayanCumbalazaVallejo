@@ -20,3 +20,17 @@ def pregunta_10():
 
 
     """
+    resultado = []
+    with open("files/input/data.csv", "r", encoding="utf-8") as file:
+        for line in file:
+            # Obtenemos la letra de la columna 1
+            letra = line.strip().split("\t")[0]
+            # Contamos los elementos de la columna 4
+            elementos_col_4 = line.strip().split("\t")[3].split(",")
+            cantidad_col_4 = len(elementos_col_4)
+            # Contamos los elementos de la columna 5
+            elementos_col_5 = line.strip().split("\t")[4].split(",")
+            cantidad_col_5 = len(elementos_col_5)
+            # Añadimos la tupla al resultado
+            resultado.append((letra, cantidad_col_4, cantidad_col_5))
+    return resultado

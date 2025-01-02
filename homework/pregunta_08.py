@@ -27,3 +27,25 @@ def pregunta_08():
      (9, ['A', 'B', 'C', 'E'])]
 
     """
+    fila = []
+    with open("files/input/data.csv", "r", encoding="utf-8") as file:
+        for line in file:
+            renglon = list(line.strip().split("\t"))
+            Pareja = (int(renglon[1]), renglon[0])
+            fila.append(Pareja)
+
+
+    sequence = sorted(list(set(sorted(fila))))
+    numeros = {}
+    for number, letra in sequence:
+        if number in numeros:
+                letras += letra
+                numeros[number] = letras
+        else:
+                letras = [letra]
+                numeros[number] = letras
+               
+    return list(numeros.items())
+
+if __name__ == "__main__":
+    print(pregunta_08())

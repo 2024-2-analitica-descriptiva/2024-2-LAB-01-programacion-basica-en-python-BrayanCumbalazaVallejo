@@ -25,4 +25,28 @@ def pregunta_06():
      ('iii', 0, 9),
      ('jjj', 5, 17)]
 
-    """
+   """
+    fila = []
+    with open("files/input/data.csv", "r", encoding="utf-8") as file:
+        for line in file:
+            renglon = list(line.strip().split("\t"))
+            letras1 = renglon[-1]
+            letras = letras1.split(",")
+            for x in letras:
+                v = x.split(":")
+                fila.append((v[0], int(v[1])))
+
+    sequence = sorted(fila)
+    diccionary = {}
+    #Aprovechando el orden, saca el min y max
+    for key, value in sequence:
+        if key in diccionary:
+            diccionary[key][0] = value
+        else:
+            diccionary[key] = [value, value]
+    tuplas3 = []
+    for key, value in diccionary.items():
+        tuplas3.append((key, diccionary[key][1], diccionary[key][0]))
+               
+
+    return tuplas3

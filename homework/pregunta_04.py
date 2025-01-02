@@ -26,3 +26,18 @@ def pregunta_04():
      ('12', 3)]
 
     """
+    fila = []
+    with open("files/input/data.csv", "r", encoding="utf-8") as file:
+        for line in file:
+            renglon = list(line.strip().split("\t"))
+            Date_complete = str(renglon[2])
+            mes_csv = Date_complete.split("-")[1]
+            fila.append((mes_csv, 1))
+    sequence = sorted(fila)
+    diccionary = {}
+    for key, value in sequence:
+        if key in diccionary:
+            diccionary[key] += value
+        else:
+            diccionary[key] = value
+    return list(diccionary.items())

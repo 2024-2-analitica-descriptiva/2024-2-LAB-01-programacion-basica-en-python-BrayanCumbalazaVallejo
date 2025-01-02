@@ -16,3 +16,26 @@ def pregunta_11():
 
 
     """
+    fila = []
+    with open("files/input/data.csv", "r", encoding="utf-8") as file:
+        for line in file:
+            renglon = list(line.strip().split("\t"))
+            letras1 = renglon[3]
+            numero = int(renglon[1])
+            letras = letras1.split(",")
+            for letra in letras:
+                fila.append((letra, numero))
+
+    sequence = sorted(fila)
+    diccionary = {}
+    #Aprovechando el orden, saca el min y max
+    for key, value in sequence:
+        if key in diccionary:
+            diccionary[key] += value
+        else:
+            diccionary[key] = value      
+
+    return diccionary
+
+if __name__ == "__main__":
+    print(pregunta_11())
